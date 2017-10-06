@@ -20,25 +20,20 @@ Source and more info at https://msdn.microsoft.com/en-us/library/windows/desktop
 
 ## Parameters
 
-### *DPI([in,r])*
+### *DPI([in,setdpi])*
 
 __in__
 
 > When empty it returns the scaling factor. Otherwise it will parse the options
 > and update the numeric values based on the scaling factor.  
-> Example: "w100", scaling is 125% -> 100 * 1.25 = 100 -> the returned string is "w125.000000"
-
-__r__
-
-> Round calculated values.  
-> Example: "x33", scaling is 125% -> 33 * 1.25 = 41.25 -> the returned value is "x41"
+> Example: "w100", scaling is 125% -> 100 * 1.25 = 100 -> the returned string is "w125"
 
 __global ###dpiset__
 
 > For testing purposes you can set a global variable (at the top of your script) for the DPI value to use.  
 > Example: If your current DPI is 120 (125%) and you would like to test 150% scaling
-> use ```global ###dpiset:=144```.  
-> If you want to (temporarily) distable dpi() use ```global ###dpiset:=96```.   
+> use ```dpi(,144)```.  
+> If you want to (temporarily) disable dpi() use ```dpi(,96)```.   
 > (see "DPI and the Desktop Scaling Factor" above)
 
 ## Notes
@@ -51,7 +46,7 @@ __global ###dpiset__
 
 ### Example 1
 
-If you need the scaling factor to calculate (new) values you can obtain the scaling function by calling the dpi() like so:
+Get the scaling factor like so:
 
 ```autohotkey
 factor:=dpi() ; will be 1.250000 at 120 DPI
@@ -67,7 +62,7 @@ Gui, Add, Text, x5 y5, Hello
 Gui, Add, Edit, xp yp+20 w200 h100 vVar, Goodbye
 Gui, Add, Button, xp yp+110 w100 gMyLabel, OK
 Gui, Add, Button, xp+110 yp w50 gGuiClose, Cancel
-Gui, Show, w220 h180, DPI() test GUI
+Gui, Show, w220 h200, DPI() test GUI
 Return
 
 MyLabel:
