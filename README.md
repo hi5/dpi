@@ -28,7 +28,7 @@ __in__
 > and update the numeric values based on the scaling factor.  
 > Example: "w100", scaling is 125% -> 100 * 1.25 = 100 -> the returned string is "w125"
 
-__global ###dpiset__
+__setdpi__
 
 > For testing purposes you can set a global variable (at the top of your script) for the DPI value to use.  
 > Example: If your current DPI is 120 (125%) and you would like to test 150% scaling
