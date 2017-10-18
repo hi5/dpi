@@ -30,7 +30,7 @@ __in__
 
 __setdpi__
 
-> For testing purposes you can set a global variable (at the top of your script) for the DPI value to use.  
+> For testing purposes you can set the DPI value to use.  
 > Example: If your current DPI is 120 (125%) and you would like to test 150% scaling
 > use ```dpi(,144)```.  
 > If you want to (temporarily) disable dpi() use ```dpi(,96)```.   
