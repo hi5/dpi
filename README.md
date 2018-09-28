@@ -4,7 +4,8 @@ DPI() can help you quickly transform your current GUI code to make it (more) DPI
 across a wide variety of DPI display settings. It hopefully avoids "illegible" text or buttons.  
 It can either return the scaling factor **or** calculate position/values for AHK controls (font size, position (x y), width, height).
 
-AutoHotkey forum: https://autohotkey.com/boards/viewtopic.php?f=6&t=37913
+AutoHotkey forum: https://autohotkey.com/boards/viewtopic.php?f=6&t=37913  
+Some more background info on the purpose of DPI() posted here https://autohotkey.com/boards/viewtopic.php?p=218669#p218669
 
 Preview - screenshots at 144 DPI (150%) before and after using DPI(): 
 ![before and after](https://raw.githubusercontent.com/hi5/_resources/master/before-after-dpi.png "before - after")
@@ -26,7 +27,7 @@ __in__
 
 > When empty it returns the scaling factor. Otherwise it will parse the options
 > and update the numeric values based on the scaling factor.  
-> Example: "w100", scaling is 125% -> 100 * 1.25 = 100 -> the returned string is "w125"
+> Example: "w100", scaling is 125% -> 100 * 1.25 = 125 -> the returned string is "w125"
 
 __setdpi__
 
@@ -38,9 +39,10 @@ __setdpi__
 
 ## Notes
 
-* Although DPI scaling is enabled by default - see https://autohotkey.com/docs/commands/Gui.htm#DPIScale - and it scales properly, the end result can still be "too small" to be friendly to use, hence DPI().
+* Although DPI scaling is enabled by default - see https://autohotkey.com/docs/commands/Gui.htm#DPIScale - and it scales properly, the end result can still be "too small" to be friendly to use, hence DPI(). See forum posts here https://autohotkey.com/boards/viewtopic.php?p=218669#p218669 for some further discussion.
 * Tip: Define a font size for all your GUIs, that way you can easily use DPI() to also scale the font size. See GuiDefaultFont() code below by SKAN on how to obtain the current default font/fontsize.
 * DPI() will use the DPI setting reported by the system in use for the primary screen. If you have a multimonitor setup with different settings for each monitor it may not work correctly.
+* Possible room for improvement: In recent editions of Windows 10 you can now set the DPI scaling per monitor. Currently dpi() will use the DPI scaling reported by the system in use for the _primary screen_. So in theory it could be improved by trying to detect which monitor the GUI will appear on first (or create a helper function for example) and try to read the DPI from the correct registry key `HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\` - see comment here https://autohotkey.com/boards/viewtopic.php?p=219034#p219034
 
 ## Code Examples
 
